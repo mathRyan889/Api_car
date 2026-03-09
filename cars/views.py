@@ -1,7 +1,8 @@
 from dj_rql.drf import RQLFilterBackend
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from cars.filters import BrandFilterClass, CarFilterClass
 from cars.models import Brand, Car
+from cars.permissions import CarOwnerPermission
 from cars.serializers import BrandModelSerializer, CarModelSerializer
 
 
@@ -17,3 +18,4 @@ class CarModelViewSet(viewsets.ModelViewSet):
     serializer_class = CarModelSerializer
     filter_backends = [RQLFilterBackend]
     rql_filter_class = CarFilterClass
+    permission_classes = [permissions.DjangoModelPermissions, CarOwnerPermission]
