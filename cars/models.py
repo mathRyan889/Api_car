@@ -22,8 +22,7 @@ class Car(models.Model):
     factory_year = models.IntegerField(null=True, verbose_name='Ano de fabricação')
     model_year = models.IntegerField(null=True, verbose_name='Ano do modelo')
     color = models.CharField(max_length=50, null=True, blank=True, verbose_name='Cor')
-    owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True,
-													    verbose_name='Proprietário')
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, verbose_name='Proprietário')
     description = models.TextField(null=True, blank=True, verbose_name='Descrição')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Atualizado em')
